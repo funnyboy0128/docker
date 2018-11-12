@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -11,12 +12,23 @@ import javax.persistence.Table;
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	private Long id;
 
 	@Column(name = "NAME", columnDefinition = "VARCHAR(255) DEFAULT NULL COMMENT '用户名'")
 	private String name;
 
 	@Column(name = "password", columnDefinition = "VARCHAR(50) DEFAULT NULL COMMENT '用户密码'")
 	private String password;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
