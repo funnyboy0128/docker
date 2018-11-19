@@ -41,20 +41,21 @@
 	</dependencies>
 
 	<build> 
-		
 		<plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.3</version>
                 <configuration>
+                    <!-- 镜像名称 -->
                     <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <!-- 指定Dockerfile 文件的位置 -->
                     <dockerDirectory>src/main/docker</dockerDirectory>
+                    <!-- 指定哪些文件需要和 Dockerfile放在一起，一般jar包需要  -->
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
@@ -64,7 +65,6 @@
                     </resources>
                 </configuration>
             </plugin>
-
         </plugins>
 		
 	</build>
